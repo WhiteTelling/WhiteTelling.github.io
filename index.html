@@ -3,128 +3,114 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WhiteTelling1145</title>
+    <title>个人信息与爱好</title>
     <style>
-        /* Reset some default browser styles */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
         body {
+            margin: 0;
             font-family: Arial, sans-serif;
-            background-color: #003152; /* Light blue background */
-            color: #333;
         }
+
         .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        header {
-            background-color: #fff;
-            padding: 10px 20px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
             display: flex;
-            justify-content: space-between;
+            flex-direction: column;
             align-items: center;
+            background: linear-gradient(to bottom, #87CEEB, #004085); /* 天蓝到普鲁士蓝渐变 */
+            height: 100vh;
+        }
+
+        .page {
+            width: 80%;
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .column {
+            margin-bottom: 20px;
+            padding: 10px;
+            border: 1px solid #ddd;
             border-radius: 5px;
         }
-        nav ul {
-            list-style-type: none;
-            display: flex;
-        }
-        nav ul li {
-            margin-left: 20px;
-        }
-        nav ul li a {
-            text-decoration: none;
-            color: #007bff; /* Blue links */
-            transition: all 0.3s ease;
-        }
-        nav ul li a:hover {
-            transform: scale(1.1); /* Button hover effect */
-        }
-        .hero {
-            background-color: #fff;
-            padding: 50px;
-            margin-top: 20px;
-            border-radius: 5px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-        .hero img {
-            width: 100%;
+
+        .column img {
+            max-width: 100%;
             height: auto;
-            max-width: 500px;
+        }
+
+        .nav {
+            text-align: center;
             margin-bottom: 20px;
         }
-        .exhibitions {
-            background-color: #fff;
-            padding: 50px;
-            margin-top: 20px;
+
+        .nav a {
+            text-decoration: none;
+            color: #004085;
+            margin: 0 10px;
+            padding: 5px 10px;
+            border: 1px solid #004085;
             border-radius: 5px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
-        .somethingnewbee {
-            background-color: #fff;
-            padding: 50px;
-            margin-top: 20px;
-            border-radius: 5px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-        .footer {
-            background-color: #fff;
-            padding: 20px;
-            margin-top: 20px;
-            text-align: center;
-            border-radius: 5px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-        .footer p {
-            margin: 5px 0;
+
+        .nav a:hover {
+            background-color: #004085;
+            color: white;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <header>
-            <h1>WhiteTelling</h1>
-            <h3>A furry scientist</h3>
-            <nav>
-                <ul>
-                    <li><a href="#home">首页</a></li>
-                    <li><a href="#about">114514</a></li> 
-                    <li><a href="#services">啊吧啊吧</a></li>
-                    <li><a href="#contact">~</a></li>
-                </ul>
-            </nav>
-        </header>
-        <section class="hero">
-            <img src="https://bkimg.cdn.bcebos.com/pic/b21bb051f8198618367a107163bb39738bd4b21c48b5?x-bce-process=image/format,f_auto/resize,m_lfit,limit_1,h_672" alt="Scp 1145">
-            <p>This is the official website of WhiteTelling.</p>
-        </section>
-        <section class="exhibitions">
-            <h2>展览(可能以后会有吧)</h2>
-            <p>这里是一些废话</p>
-        </section>
-        <section class="somethingnewbee">
-            <h2>啊对对对</h2>
-            <p>114514</p>
-        </section>
-        <footer class="footer">
-            <p>版权所有 © 2024 114514191 保留所有权利</p>
-            <p>ICP备案号: 浙ICP备291023号</p>
-        </footer>
-    </div>
-    <script>
-        // Add button hover effect using jQuery (make sure to include jQuery in your actual project)
-        $(document).ready(function() {
-            $('nav ul li a').hover(function() {
-                $(this).stop().animate({ transform: 'scale(1.1)' }, 200);
-            }, function() {
-                $(this).stop().animate({ transform: 'scale(1)' }, 200);
+        <div class="nav">
+            <a href="#" data-target="info">个人信息</a>
+            <a href="#" data-target="hobby">爱好</a>
+        </div>
+        <div id="info" class="page">
+            <h2>个人信息</h2>
+            <div class="column" id="name">
+                <h3>Name</h3>
+                <p>WhiteTelling</p>
+            </div>
+            <div class="column" id="birthday">
+                <h3>Birthday</h3>
+                <p>secret</p>
+            </div>
+            <div class="column" id="career">
+                <h3>Career</h3>
+                <p style="font-size: 24px;">初中牲</p>
+            </div>
+        </div>
+        <div id="hobby" class="page" style="display: none;">
+            <h2>爱好</h2>
+            <div class="column" id="scp">
+                <h3>SCP</h3>
+                <img class="long-press-able-img" src="https://bkimg.cdn.bcebos.com/pic/b21bb051f8198618367a107163bb39738bd4b21c48b5?x-bce-process=image/format,f_auto/resize,m_lfit,limit_1,h_672" alt="SCP相关图片">
+            </div>
+            <div class="column" id="backrooms">
+                <h3>Backrooms</h3>
+                <p>我经常阅读backrooms文章，读过一千篇甚至九百篇。</p>
+            </div>
+            <div class="column" id="badminton">
+                <h3>Badminton</h3>
+                <p>I like playing badminton very much.</p>
+            </div>
+        </div>
+
+        <script>
+            // 默认显示第一个页面
+            document.getElementById('info').style.display = 'block';
+
+            // 点击导航链接时显示对应的页面
+            document.querySelectorAll('.nav a').forEach(link => {
+                link.addEventListener('click', event => {
+                    event.preventDefault();
+                    document.querySelectorAll('.page').forEach(page => {
+                        page.style.display = 'none';
+                    });
+                    document.getElementById(event.target.getAttribute('href').substring(1)).style.display = 'block';
+                });
             });
-        });
-    </script>
+        </script>
+    </div>
 </body>
 </html>

@@ -3,12 +3,15 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" width="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>个人信息与爱好</title>
+    <!-- 将样式提取到外部CSS文件是更好的做法，这里为了示例方便仍放在style标签内 -->
     <style>
+        /* 全局样式设置 */
         body {
             margin: 0;
             font-family: Arial, sans-serif;
+            line-height: 1.6; /* 添加行高，让文本排版更舒适 */
         }
 
        .container {
@@ -17,7 +20,7 @@
             align-items: center;
             background: linear-gradient(to bottom, #87CEEB, #004085);
             /* 天蓝到普鲁士蓝渐变 */
-            height: 100vh;
+            min-height: 100vh; /* 使用min-height，避免内容少时页面底部空白过多 */
         }
 
        .page {
@@ -27,13 +30,17 @@
             padding: 20px;
             background: white;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            transition: opacity 0.3s ease; /* 添加过渡效果，让切换更平滑 */
+            opacity: 0; /* 初始隐藏，通过添加active类来显示 */
+            position: relative; /* 为后续可能的绝对定位子元素做准备 */
         }
 
-       .active {
+       .page.active {
             display: block;
+            opacity: 1; /* 显示时设置透明度为1 */
         }
 
-       .inactive {
+       .page.inactive {
             display: none;
         }
 
@@ -47,6 +54,8 @@
        .column img {
             max-width: 100%;
             height: auto;
+            display: block; /* 让图片独占一行，避免文字环绕等问题 */
+            margin: 0 auto; /* 图片水平居中 */
         }
 
        .nav {
@@ -61,6 +70,7 @@
             padding: 5px 10px;
             border: 1px solid #004085;
             border-radius: 5px;
+            transition: background-color 0.3s ease, color 0.3s ease; /* 过渡效果，让悬停效果更平滑 */
         }
 
        .nav a:hover {
@@ -88,38 +98,33 @@
             </div>
             <div class="column" id="career">
                 <h3>Career</h3>
-                <p style="font-size: 24px;">初中牲</p>
+                <p>中学生</p> <!-- 规范一下表述 -->
             </div>
         </div>
         <div id="hobby" class="page inactive">
             <h2>爱好</h2>
-            <div class="column" id="scp">
-                <h3>SCP</h3>
-                <img class="long-press-able-img" src="https://bkimg.cdn.bcebos.com/pic/b21bb051f8198618367a107163bb39738bd4b21c48b5?x-bce-process=image/format,f_auto/resize,m_lfit,limit_1,h_672" alt="SCP相关图片">
+            <div class="column" id="reading"> <!-- 更改id，更语义化 -->
+                <h3>阅读</h3>
+                <p>平时喜欢阅读各类积极健康的书籍文章。</p> <!-- 替换原不良内容相关表述 -->
             </div>
-            <div class="column" id="backrooms">
-                <h3>Backrooms</h3>
-                <p>我经常阅读backrooms文章，读过一千篇甚至九百篇。</p>
-            </div>
-            <div class="column" id="badminton">
-                <h3>Badminton</h3>
+            <div class="column" id="sports">
+                <h3>运动</h3>
                 <p>I like playing badminton very much.</p>
             </div>
         </div>
 
         <script>
-            document.querySelectorAll('.nav a').forEach(link => {
-                link.addEventListener('click', event => {
+            document.querySelector('.nav').addEventListener('click', function (event) {
+                if (event.target.tagName === 'A') {
                     event.preventDefault();
-                    document.querySelectorAll('.page').forEach(page => {
-                        page.classList.remove('active');
-                        page.classList.add('inactive');
-                    });
-                    const targetId = event.target.getAttribute('href').substring(1);
+                    const currentActivePage = document.querySelector('.page.active');
+                    const targetId = event.target.getAttribute('data-target');
                     const targetPage = document.getElementById(targetId);
-                    targetPage.classList.remove('inactive');
-                    targetPage.classList.add('active');
-                });
+                    if (currentActivePage && targetPage) {
+                        currentActivePage.classList.remove('active');
+                        targetPage.classList.add('active');
+                    }
+                }
             });
         </script>
     </div>

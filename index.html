@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" width="width=device-width, initial-scale=1.0">
     <title>个人信息与爱好</title>
     <style>
         body {
@@ -10,15 +11,16 @@
             font-family: Arial, sans-serif;
         }
 
-        .container {
+       .container {
             display: flex;
             flex-direction: column;
             align-items: center;
-            background: linear-gradient(to bottom, #87CEEB, #004085); /* 天蓝到普鲁士蓝渐变 */
+            background: linear-gradient(to bottom, #87CEEB, #004085);
+            /* 天蓝到普鲁士蓝渐变 */
             height: 100vh;
         }
 
-        .page {
+       .page {
             width: 80%;
             max-width: 800px;
             margin: 20px auto;
@@ -27,24 +29,32 @@
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
 
-        .column {
+       .active {
+            display: block;
+        }
+
+       .inactive {
+            display: none;
+        }
+
+       .column {
             margin-bottom: 20px;
             padding: 10px;
             border: 1px solid #ddd;
             border-radius: 5px;
         }
 
-        .column img {
+       .column img {
             max-width: 100%;
             height: auto;
         }
 
-        .nav {
+       .nav {
             text-align: center;
             margin-bottom: 20px;
         }
 
-        .nav a {
+       .nav a {
             text-decoration: none;
             color: #004085;
             margin: 0 10px;
@@ -53,19 +63,20 @@
             border-radius: 5px;
         }
 
-        .nav a:hover {
+       .nav a:hover {
             background-color: #004085;
             color: white;
         }
     </style>
 </head>
+
 <body>
     <div class="container">
         <div class="nav">
             <a href="#" data-target="info">个人信息</a>
             <a href="#" data-target="hobby">爱好</a>
         </div>
-        <div id="info" class="page">
+        <div id="info" class="page active">
             <h2>个人信息</h2>
             <div class="column" id="name">
                 <h3>Name</h3>
@@ -80,7 +91,7 @@
                 <p style="font-size: 24px;">初中牲</p>
             </div>
         </div>
-        <div id="hobby" class="page" style="display: none;">
+        <div id="hobby" class="page inactive">
             <h2>爱好</h2>
             <div class="column" id="scp">
                 <h3>SCP</h3>
@@ -97,20 +108,21 @@
         </div>
 
         <script>
-            // 默认显示第一个页面
-            document.getElementById('info').style.display = 'block';
-
-            // 点击导航链接时显示对应的页面
             document.querySelectorAll('.nav a').forEach(link => {
                 link.addEventListener('click', event => {
                     event.preventDefault();
                     document.querySelectorAll('.page').forEach(page => {
-                        page.style.display = 'none';
+                        page.classList.remove('active');
+                        page.classList.add('inactive');
                     });
-                    document.getElementById(event.target.getAttribute('href').substring(1)).style.display = 'block';
+                    const targetId = event.target.getAttribute('href').substring(1);
+                    const targetPage = document.getElementById(targetId);
+                    targetPage.classList.remove('inactive');
+                    targetPage.classList.add('active');
                 });
             });
         </script>
     </div>
 </body>
+
 </html>
